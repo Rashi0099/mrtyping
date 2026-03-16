@@ -8,6 +8,11 @@ from .models import Profile, TypingResult, LevelCompletion
 from .serializers import (
     UserSerializer, ProfileSerializer, TypingResultSerializer, LevelCompletionSerializer
 )
+from rest_framework_simplejwt.views import TokenObtainPairView
+from .auth_serializer import EmailTokenObtainPairSerializer
+
+class EmailLoginView(TokenObtainPairView):
+    serializer_class = EmailTokenObtainPairSerializer
 
 User = get_user_model()
 

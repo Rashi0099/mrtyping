@@ -62,8 +62,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       const res = await fetch(`${API_BASE_URL}/auth/register/`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username: email.split('@')[0], email, password })
-      });
+        body: JSON.stringify({ username: email, email, password })  
+          });
       const data = await res.json();
       if (!res.ok) return { error: JSON.stringify(data) };
       
@@ -80,8 +80,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       const res = await fetch(`${API_BASE_URL}/auth/login/`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username: email.split('@')[0], password })
-      });
+        body: JSON.stringify({ username: email, password })    
+        });
       const data = await res.json();
       if (!res.ok) return { error: "Invalid credentials" };
       
